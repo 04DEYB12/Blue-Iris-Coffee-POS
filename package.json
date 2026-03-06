@@ -1,0 +1,17 @@
+{
+  "name": "blue-iris-coffee-pos",
+  "version": "1.0.0",
+  "description": "Blue Iris Coffee Point of Sale System with Tailwind CSS",
+  "main": "index.js",
+  "scripts": {
+    "build-css": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.0",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32"
+  }
+}

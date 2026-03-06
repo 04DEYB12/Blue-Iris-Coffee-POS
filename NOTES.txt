@@ -1,0 +1,17 @@
+Accounts:
+Super Admin: ID: CMIMS0001 | Password: CMIMS123
+
+
+TERMINAL SCRIPT: npm run build-css
+
+GANTT CHART:
+
+March 03-04, 2026
+✅ Database Connection
+✅ Landing Page
+- Login Page
+    ✅ Authentication
+    - Forgot Password
+- Dashboard
+
+// pending at character dynamic
