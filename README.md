@@ -2,13 +2,6 @@
 
 A comprehensive Point of Sale (POS) system designed for coffee shop management.
 
-## 📋 Table of Contents
-- [Installation](#installation)
-- [Accounts](#accounts)
-- [Features](#features)
-- [Development](#development)
-- [Project Status](#project-status)
-
 ## 🚀 Installation
 
 ### Prerequisites
@@ -68,57 +61,6 @@ A comprehensive Point of Sale (POS) system designed for coffee shop management.
 - **Backend**: PHP, MySQL
 - **Icons**: Boxicons
 - **Build Tool**: Node.js
-
-### File Structure
-```
-Blue-Iris-Coffee-POS/
-├── public/
-│   ├── components/     # Reusable components
-│   └── assets/         # Static assets
-├── view/              # Page templates
-├── model/             # Database models
-├── controller/        # Business logic
-└── dist/              # Compiled CSS
-```
-
-### CSS Compilation
-```bash
-npm run build-css
-```
-
-## 📊 Project Status
-
-### Completed (✅)
-- Database connection and setup
-- Landing page design
-- User authentication system
-- Sidebar navigation
-- Header component with real-time clock
-- Dashboard UI/UX design
-
-### In Progress (🔄)
-- Product management system
-- Point of Sale interface
-- Transaction recording
-- Forgot password functionality
-
-### Pending (📋)
-- Advanced reporting
-- Inventory management
-- Customer management
-- Analytics dashboard
-
-## 📅 Development Timeline
-
-### March 03-04, 2026
-- ✅ Database Connection
-- ✅ Landing Page
-- ✅ Login Authentication
-
-### March 19-20, 2026
-- ✅ Dashboard (Static)
-- ✅ Sidebar Component
-- ✅ Header Component
 
 ---
 
