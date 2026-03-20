@@ -168,6 +168,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
                             $_SESSION['User_ID'] = $user_data['PersonnelID'];
                             $_SESSION['role'] = $user_data['RoleName'];
                             $_SESSION['LoginSuccess'] = true;
+                            $_SESSION['Username'] = $user_data['FirstName'] . ' ' . $user_data['LastName'];
                             session_regenerate_id(true);
                             
                             sendJsonResponse([

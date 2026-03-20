@@ -6,6 +6,7 @@ module.exports = {
     "./*.html",
     "./*.php",
     "./public/**/*.php",
+    "./view/**/*.php",
     "./controller/**/*.js"
   ],
   theme: {

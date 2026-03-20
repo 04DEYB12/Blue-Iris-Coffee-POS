@@ -1,148 +1,209 @@
-<aside class="fixed top-0 left-0 w-72 h-screen bg-gradient-to-br from-slate-800 to-slate-900 text-white z-[1000] transition-all duration-300 overflow-hidden shadow-2xl" id="sidebar">
+<aside id="sidebar" class="fixed top-0 left-0 w-72 h-screen bg-gradient-to-br from-[#384862] via-[#483527] to-[#384862] text-white z-[1000] transition-all duration-300 overflow-hidden shadow-2xl flex flex-col">
     <!-- Sidebar Header -->
-    <div class="p-8 border-b border-white/10 bg-white/5">
+    <div class="p-6 border-b border-white/10 bg-white/5 backdrop-blur-sm">
         <div class="flex items-center gap-4">
-            <div class="relative">
-                <img src="../assets/blue_iris_logo.png" alt="Logo" width="50" height="50" 
-                     class="rounded-xl border-2 border-emerald-500/30 hover:border-emerald-500 hover:scale-105 transition-all duration-300">
+            <div class="relative w-16 h-16 flex items-center justify-center">
+                <div class="absolute inset-0 bg-gradient-to-r from-white/30 to-white/10 rounded-full blur-lg opacity-60 animate-pulse"></div>
+                <img src="../assets/blue_iris_logo.png" alt="Blue Iris Coffee Logo" width="50" height="50" 
+                     class="relative w-12 h-12 rounded-xl border-2 border-white/30 shadow-lg object-cover hover:scale-105 transition-all duration-300 z-10">
             </div>
             <div class="brand">
-                <h1 class="text-2xl font-bold text-emerald-500 font-['Orbitron']">Blue Iris Coffee</h1>
-                <span class="text-xs text-slate-400 leading-tight">Coffee Shop Management System</span>
+                <h1 class="text-xl font-bold text-white font-['Segoe_UI'] shadow-lg">Blue Iris Coffee</h1>
+                <span class="text-xs text-white/70 leading-tight font-medium">POS Management System</span>
             </div>
         </div>
     </div>  
     
     <!-- Sidebar Navigation -->
-    <nav class="p-6 flex-1">
-        <div class="mb-8">
-            <h2 class="text-xs font-semibold text-slate-500 uppercase tracking-wider px-6 mb-4">Navigation</h2>
+    <nav class="flex-1 p-4 overflow-y-auto">
+        <div class="mb-6">
+            <h2 class="text-xs font-semibold text-white/50 uppercase tracking-wider px-4 mb-3">Main Menu</h2>
             <ul class="space-y-1">
-                <li class="nav-item">
-                    <a href="#" class="flex items-center gap-4 px-6 py-3.5 text-slate-300 hover:bg-emerald-500/10 hover:text-emerald-500 hover:pl-8 transition-all duration-300 relative font-medium group active" 
-                       data-page="dashboard">
-                        <i class='bx bx-grid-alt text-xl min-w-[24px] text-center'></i>
-                        <span class="text-sm whitespace-nowrap">DASHBAORD</span>
-                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-500/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-500"></div>
+                <li class="nav-item <?php echo strpos($_SERVER['PHP_SELF'], 'dashboard.php') !== false ? 'active' : ''; ?>">
+                    <a href="../view/dashboard.php" class="flex items-center gap-3 px-4 py-3 text-white/80 hover:bg-white/10 hover:text-white hover:pl-6 transition-all duration-300 relative font-medium group rounded-lg overflow-hidden">
+                        <i class='bx bx-home-smile text-lg min-w-[20px] text-center'></i>
+                        <span class="text-sm whitespace-nowrap">Dashboard</span>
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-500"></div>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="flex items-center gap-4 px-6 py-3.5 text-slate-300 hover:bg-emerald-500/10 hover:text-emerald-500 hover:pl-8 transition-all duration-300 relative font-medium group" 
-                       data-page="users">
-                        <i class='bx bx-capsule text-xl min-w-[24px] text-center'></i>
-                        <span class="text-sm whitespace-nowrap">MEDICINE</span>
-                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-500/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-500"></div>
+                <li style="display: <?php echo $role == 'Administrator' || $role == 'Super Administrator' ? 'block' : 'none'; ?>;" class="nav-item <?php echo strpos($_SERVER['PHP_SELF'], 'AccountManagement.php') !== false ? 'active' : ''; ?>">
+                    <a href="#" onclick="showAlert('Inventory coming soon!', 'info');" class="flex items-center gap-3 px-4 py-3 text-white/80 hover:bg-white/10 hover:text-white hover:pl-6 transition-all duration-300 relative font-medium group rounded-lg overflow-hidden">
+                        <i class='bx bx-coffee text-lg min-w-[20px] text-center'></i>
+                        <span class="text-sm whitespace-nowrap">POS</span>
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-500"></div>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="flex items-center gap-4 px-6 py-3.5 text-slate-300 hover:bg-emerald-500/10 hover:text-emerald-500 hover:pl-8 transition-all duration-300 relative font-medium group" 
-                       data-page="patients">
-                        <i class='bx bx-group text-xl min-w-[24px] text-center'></i>
-                        <span class="text-sm whitespace-nowrap">ACCOUNTS</span>
-                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-500/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-500"></div>
+                <li class="nav-item <?php echo strpos($_SERVER['PHP_SELF'], 'products.php') !== false ? 'active' : ''; ?>">
+                    <a href="../view/products.php" class="flex items-center gap-3 px-4 py-3 text-white/80 hover:bg-white/10 hover:text-white hover:pl-6 transition-all duration-300 relative font-medium group rounded-lg overflow-hidden">
+                        <i class='bx bx-cookie text-lg min-w-[20px] text-center'></i>
+                        <span class="text-sm whitespace-nowrap">Products</span>
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-500"></div>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="flex items-center gap-4 px-6 py-3.5 text-slate-300 hover:bg-emerald-500/10 hover:text-emerald-500 hover:pl-8 transition-all duration-300 relative font-medium group" 
-                       data-page="patients">
-                        <i class='bx bx-group text-xl min-w-[24px] text-center'></i>
-                        <span class="text-sm whitespace-nowrap">REPORTS</span>
-                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-500/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-500"></div>
+                <li class="nav-item <?php echo strpos($_SERVER['PHP_SELF'], 'Inventory.php') !== false ? 'active' : ''; ?>">
+                    <a href="#" onclick="showAlert('Inventory coming soon!', 'info');" class="flex items-center gap-3 px-4 py-3 text-white/80 hover:bg-white/10 hover:text-white hover:pl-6 transition-all duration-300 relative font-medium group rounded-lg overflow-hidden">
+                        <i class='bx bx-package text-lg min-w-[20px] text-center'></i>
+                        <span class="text-sm whitespace-nowrap">Inventory</span>
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-500"></div>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="flex items-center gap-4 px-6 py-3.5 text-slate-300 hover:bg-emerald-500/10 hover:text-emerald-500 hover:pl-8 transition-all duration-300 relative font-medium group" 
-                       data-page="inventory">
-                        <i class='bx bx-history text-xl min-w-[24px] text-center'></i>
-                        <span class="text-sm whitespace-nowrap">HISTORY LOGS</span>
-                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-500/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-500"></div>
+                <li class="nav-item <?php echo strpos($_SERVER['PHP_SELF'], 'Sales.php') !== false ? 'active' : ''; ?>">
+                    <a href="#" onclick="showAlert('Sales coming soon!', 'info');" class="flex items-center gap-3 px-4 py-3 text-white/80 hover:bg-white/10 hover:text-white hover:pl-6 transition-all duration-300 relative font-medium group rounded-lg overflow-hidden">
+                        <i class='bx bx-money-withdraw text-lg min-w-[20px] text-center'></i>
+                        <span class="text-sm whitespace-nowrap">Sales</span>
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-500"></div>
+                    </a>
+                </li>
+                <li class="nav-item <?php echo strpos($_SERVER['PHP_SELF'], 'Reports.php') !== false ? 'active' : ''; ?>">
+                    <a href="#" onclick="showAlert('Reports coming soon!', 'info');" class="flex items-center gap-3 px-4 py-3 text-white/80 hover:bg-white/10 hover:text-white hover:pl-6 transition-all duration-300 relative font-medium group rounded-lg overflow-hidden">
+                        <i class='bx bx-pie-chart-alt-2 text-lg min-w-[20px] text-center'></i>
+                        <span class="text-sm whitespace-nowrap">Reports</span>
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-500"></div>
+                    </a>
+                </li>
+                <li style="display: <?php echo $role == 'Administrator' || $role == 'Super Administrator' ? 'block' : 'none'; ?>;" class="nav-item <?php echo strpos($_SERVER['PHP_SELF'], 'AuditLogs.php') !== false ? 'active' : ''; ?>">
+                    <a href="#" onclick="showAlert('Audit Logs coming soon!', 'info');" class="flex items-center gap-3 px-4 py-3 text-white/80 hover:bg-white/10 hover:text-white hover:pl-6 transition-all duration-300 relative font-medium group rounded-lg overflow-hidden">
+                        <i class='bx bx-shield-quarter text-lg min-w-[20px] text-center'></i>
+                        <span class="text-sm whitespace-nowrap">Audit Logs</span>
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-500"></div>
                     </a>
                 </li>
             </ul>
         </div>
     </nav>
     
-    <!-- My Account Navigation -->
-    <nav class="px-6 pb-6">
-        <div class="mb-4">
-            <h2 class="text-xs font-semibold text-slate-500 uppercase tracking-wider px-6 mb-4">My Account</h2>
-            <ul class="space-y-1">
-                <li class="nav-item">
-                    <a href="#" class="flex items-center gap-4 px-6 py-3.5 text-slate-300 hover:bg-emerald-500/10 hover:text-emerald-500 hover:pl-8 transition-all duration-300 relative font-medium group" 
-                       data-page="profile">
-                        <i class='bx bx-user-circle text-xl min-w-[24px] text-center'></i>
-                        <span class="text-sm whitespace-nowrap">Profile</span>
-                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-500/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-500"></div>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="flex items-center gap-4 px-6 py-3.5 text-slate-300 hover:bg-emerald-500/10 hover:text-emerald-500 hover:pl-8 transition-all duration-300 relative font-medium group" 
-                       data-page="guide">
-                        <i class='bx bx-book-open text-xl min-w-[24px] text-center'></i>
-                        <span class="text-sm whitespace-nowrap">User Guide</span>
-                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-500/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-500"></div>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="flex items-center gap-4 px-6 py-3.5 text-slate-300 hover:bg-red-500/10 hover:text-red-400 hover:pl-8 transition-all duration-300 relative font-medium group" 
-                       onclick="handleLogout()">
-                        <i class='bx bx-log-out text-xl min-w-[24px] text-center'></i>
-                        <span class="text-sm whitespace-nowrap">Sign Out</span>
-                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-red-500/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-500"></div>
-                    </a>
-                </li>
-            </ul>
+    <!-- Sidebar User Profile -->
+    <div class="p-4 border-t border-white/10 bg-black/10">
+        <div class="profile-menu relative" id="profileMenu">
+            <div class="flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-all duration-300 bg-white/5 hover:bg-white/10">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center font-semibold text-sm text-white shadow-lg">
+                    DM
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-sm font-semibold text-white">Dave Malaran</h3>
+                    <span class="text-xs text-white/70">Administrator</span>
+                </div>
+                <i class='bx bx-chevron-up text-white/70 transition-transform duration-300'></i>
+            </div>
+            <div class="absolute bottom-full left-0 right-0 mb-2 bg-slate-800/95 backdrop-blur-sm rounded-xl shadow-2xl border border-white/10 opacity-0 invisible translate-y-2 transition-all duration-300 overflow-hidden" id="profileDropdown">
+                <div class="p-4 border-b border-white/10 flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center font-semibold text-sm text-white shadow-lg">
+                        DM
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-sm font-semibold text-white">Dave Malaran</h3>
+                        <span class="text-xs text-white/70">Administrator</span>
+                    </div>
+                </div>
+                
+                <ul class="p-2 space-y-1">
+                    <li style="display: <?php echo $role == 'Super Administrator' ? 'none' : 'block'; ?>;">
+                        <a onclick="showAlert('Profile coming soon!', 'info');" class="flex items-center gap-3 px-3 py-2 text-white/80 hover:bg-white/10 hover:text-white rounded-lg transition-all duration-300 text-sm">
+                            <i class='bx bx-user text-base'></i>
+                            <span>Profile</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="showAlert('User Guide coming soon!', 'info');" class="flex items-center gap-3 px-3 py-2 text-white/80 hover:bg-white/10 hover:text-white rounded-lg transition-all duration-300 text-sm">
+                            <i class='bx bx-book-open text-base'></i>
+                            <span>User Guide</span>
+                        </a>
+                    </li>
+                    <div class="h-px bg-white/10 mx-3 my-2"></div>
+                    <li>
+                        <a href="../public/logout.php" class="flex items-center gap-3 px-3 py-2 text-red-400 hover:bg-red-500/20 hover:text-red-400 rounded-lg transition-all duration-300 text-sm">
+                            <i class='bx bx-log-out text-base'></i>
+                            <span>Log out</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </nav>
-    
+    </div>
 </aside>
 
+<script>
+    // Profile dropdown toggle
+    const profileMenu = document.getElementById('profileMenu');
+    const profileDropdown = document.getElementById('profileDropdown');
+    const dropdownIcon = profileMenu.querySelector('.bx-chevron-up');
+    
+    profileMenu.addEventListener('click', function(e) {
+        e.stopPropagation();
+        profileDropdown.classList.toggle('opacity-100');
+        profileDropdown.classList.toggle('invisible');
+        profileDropdown.classList.toggle('translate-y-0');
+        profileDropdown.classList.toggle('translate-y-2');
+        dropdownIcon.classList.toggle('rotate-180');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!profileMenu.contains(e.target)) {
+            profileDropdown.classList.remove('opacity-100');
+            profileDropdown.classList.add('invisible');
+            profileDropdown.classList.add('translate-y-2');
+            profileDropdown.classList.remove('translate-y-0');
+            dropdownIcon.classList.remove('rotate-180');
+        }
+    });
+
+    // Add active state styling for navigation items
+    document.querySelectorAll('.nav-item').forEach(item => {
+        if (item.classList.contains('active')) {
+            const link = item.querySelector('a');
+            if (link) {
+                link.classList.add('bg-gradient-to-r', 'from-white/20', 'to-white/5', 'text-white', 'border-l-3', 'border-white', 'shadow-lg');
+            }
+        }
+    });
+</script>
+
 <style>
-/* Custom styles for collapsed state and active items */
+/* Custom scrollbar for navigation */
+.overflow-y-auto::-webkit-scrollbar {
+    width: 4px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Collapsed state styles */
 .sidebar.collapsed {
     width: 5rem;
 }
 
 .sidebar.collapsed .brand span,
 .sidebar.collapsed .nav-item span,
+.sidebar.collapsed .nav-group-title,
 .sidebar.collapsed .user-info h3,
-.sidebar.collapsed .user-info .role,
-.sidebar.collapsed .dropdown-icon {
+.sidebar.collapsed .user-info span,
+.sidebar.collapsed .bx-chevron-up {
     display: none;
 }
 
 .sidebar.collapsed .nav-item a {
     justify-content: center;
-    padding: 0.875rem;
+    padding: 0.75rem;
 }
 
 .sidebar.collapsed .nav-item a:hover {
-    padding-left: 0.875rem;
+    padding-left: 0.75rem;
 }
 
 .sidebar.collapsed .profile-info {
     justify-content: center;
-    padding: 0.75rem;
-}
-
-.sidebar.collapsed .nav-group-title {
-    display: none;
-}
-
-.nav-item a.active {
-    background: linear-gradient(90deg, rgba(16, 185, 129, 0.2) 0%, rgba(16, 185, 129, 0.05) 100%);
-    color: #10b981;
-    border-left: 3px solid #10b981;
-}
-
-.profile-dropdown.show {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-.profile-dropdown.show .dropdown-icon {
-    transform: rotate(180deg);
+    padding: 0.75rem 0.5rem;
 }
 
 /* Mobile responsive */
@@ -159,112 +220,4 @@
         width: 18rem;
     }
 }
-
-/* Scrollbar styling */
-.sidebar::-webkit-scrollbar {
-    width: 4px;
-}
-
-.sidebar::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.05);
-}
-
-.sidebar::-webkit-scrollbar-thumb {
-    background: rgba(16, 185, 129, 0.3);
-    border-radius: 2px;
-}
-
-.sidebar::-webkit-scrollbar-thumb:hover {
-    background: rgba(16, 185, 129, 0.5);
-}
 </style>
-
-<script>
-    // Profile dropdown toggle
-    const profileMenu = document.getElementById('profileMenu');
-    const profileDropdown = document.getElementById('profileDropdown');
-    
-    profileMenu.addEventListener('click', function(e) {
-        e.stopPropagation();
-        profileDropdown.classList.toggle('show');
-    });
-
-    // Close dropdown when clicking outside
-    document.addEventListener('click', function(e) {
-        if (!profileMenu.contains(e.target)) {
-            profileDropdown.classList.remove('show');
-        }
-    });
-
-    // Navigation item click handlers
-    document.querySelectorAll('.nav-item a').forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Remove active class from all links
-            document.querySelectorAll('.nav-item a').forEach(l => l.classList.remove('active'));
-            
-            // Add active class to clicked link
-            this.classList.add('active');
-            
-            // Handle page navigation
-            const page = this.getAttribute('data-page');
-            if (page) {
-                loadPage(page);
-            }
-        });
-    });
-
-    // Load page content
-    function loadPage(page) {
-        const mainContent = document.querySelector('.main-content');
-        const pageTitle = document.getElementById('pageTitle');
-        
-        // Update page title
-        const titles = {
-            dashboard: 'DASHBOARD',
-            users: 'USER MANAGEMENT',
-            patients: 'PATIENTS / STUDENTS',
-            inventory: 'INVENTORY',
-            audit: 'AUDIT LOGS'
-        };
-        
-        if (pageTitle) {
-            pageTitle.textContent = titles[page] || 'DASHBOARD';
-        }
-        
-        // Here you can load different page content
-        console.log('Loading page:', page);
-    }
-
-    // Logout handler
-    function handleLogout() {
-        if (confirm('Are you sure you want to logout?')) {
-            window.location.href = '../public/logout.php';
-        }
-    }
-
-    // Sidebar toggle functionality
-    const sidebarToggle = document.getElementById('sidebarToggle');
-    const sidebar = document.getElementById('sidebar');
-    
-    if (sidebarToggle) {
-        sidebarToggle.addEventListener('click', function() {
-            sidebar.classList.toggle('collapsed');
-        });
-    }
-
-    // Mobile sidebar toggle
-    function toggleMobileSidebar() {
-        sidebar.classList.toggle('mobile-open');
-    }
-
-    // Close mobile sidebar when clicking outside
-    document.addEventListener('click', function(e) {
-        if (window.innerWidth <= 768 && 
-            !sidebar.contains(e.target) && 
-            !sidebarToggle.contains(e.target)) {
-            sidebar.classList.remove('mobile-open');
-        }
-    });
-</script>
