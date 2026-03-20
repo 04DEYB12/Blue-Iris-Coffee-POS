@@ -1,0 +1,13 @@
+GANTT CHART:
+
+March 03-04, 2026
+✅ Database Connection
+✅ Landing Page
+- Login Page
+    ✅ Authentication
+    - Forgot Password
+
+March 19-20, 2026
+✅ Dashboard (Static)
+✅ Sidebar
+✅ Header

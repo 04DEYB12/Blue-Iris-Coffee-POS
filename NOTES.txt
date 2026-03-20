@@ -4,14 +4,30 @@ Super Admin: ID: CMIMS0001 | Password: CMIMS123
 
 TERMINAL SCRIPT: npm run build-css
 
-GANTT CHART:
+Core Feature:
 
-March 03-04, 2026
-✅ Database Connection
-✅ Landing Page
-- Login Page
+✅ Landing Page (Open for Improvement)
+Login Page:
     ✅ Authentication
     - Forgot Password
-- Dashboard
-
-✅ pending at character dynamic
+Components:
+    ✅ Sidebar
+    ✅ Header
+    
+DASHBOARD:
+    ✅ UI/UX Design (Static)
+    - Today Revenue
+    - Today Orders
+    - Top Products
+    - Stock Alert
+    - Recent Transaction
+    - Quick Actions
+    
+PRODUCTS:
+    - Add Product
+    - Edit Product
+    - Delete Product
+    - View Product
+    - Search Product
+    - Filter Product
+    - Sort Product
