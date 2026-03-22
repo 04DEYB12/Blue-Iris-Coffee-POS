@@ -47,9 +47,9 @@ A comprehensive Point of Sale (POS) system designed for coffee shop management.
 
 ### Products Management
 - ✅ **Add Product** functionality
-- ✅ **Edit Product** capabilities
-- ✅ **Delete Product** operations
-- ✅ **View Product** details
+- 🔄 **Edit Product** capabilities
+- 🔄 **Delete Product** operations
+- 🔄 **View Product** details
 - ✅ **Search Product** feature
 - ✅ **Filter Product** options
 - ✅ **Sort Product** functionality
