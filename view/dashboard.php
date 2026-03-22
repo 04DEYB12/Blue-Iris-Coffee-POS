@@ -208,7 +208,7 @@ $user_id = $_SESSION['User_ID'];
                                     </div>
                                 </button>
                                 
-                                <button onclick="showAlert('Products coming soon!', 'info')" class="w-full p-4 bg-gradient-to-br from-green-50 via-green-100 to-green-50 hover:from-green-100 hover:via-green-200 hover:to-green-100 rounded-2xl transition-all duration-500 text-left border border-green-100 hover:border-green-300 hover:shadow-lg transform hover:-translate-y-1 group">
+                                <button onclick="openAddProductModal()" class="w-full p-4 bg-gradient-to-br from-green-50 via-green-100 to-green-50 hover:from-green-100 hover:via-green-200 hover:to-green-100 rounded-2xl transition-all duration-500 text-left border border-green-100 hover:border-green-300 hover:shadow-lg transform hover:-translate-y-1 group">
                                     <div class="flex items-center">
                                         <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                                             <i class='bx bx-plus-circle text-white text-2xl'></i>
@@ -255,6 +255,8 @@ $user_id = $_SESSION['User_ID'];
     </main>
 
     <?php
+    include 'modal/addProduct_modal.php';    
+    
     if(isset($_SESSION['LoginSuccess']) && $_SESSION['LoginSuccess'] == true) {
         echo "<script>showAlert('Login successful!', 'success');</script>";
         unset($_SESSION['LoginSuccess']);

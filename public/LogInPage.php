@@ -232,11 +232,10 @@ include_once("../model/connection.php");
         
         function Login() {
             const formData = new FormData();
-            formData.append('action', 'login');
             formData.append('userid', document.getElementById('userid').value);
             formData.append('password', document.getElementById('password').value);
 
-            fetch('../model/UserFunctions.php', {
+            fetch('../model/loginuser.php', {
                 method: 'POST',
                 body: formData
             })

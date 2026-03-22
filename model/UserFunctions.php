@@ -155,7 +155,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
                     break;
                 }
             
-                $query = "SELECT * FROM clinicpersonnel cp JOIN userrole ur ON cp.RoleID = ur.RoleID WHERE cp.PersonnelID = ? LIMIT 1";
+                $query = "SELECT * FROM users WHERE user_id = ? LIMIT 1";
                 $stmt = $con->prepare($query);
                 $stmt->bind_param("s", $userid);
                 $stmt->execute();
@@ -163,12 +163,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
                 
                 if ($result && $result->num_rows > 0) {
                     $user_data = $result->fetch_assoc();
-                    if (/*password_verify($password, $user_data['PasswordHash'])*/ $password == $user_data['PasswordHash']) {
-                        if($user_data['Status'] == 'Active') {
-                            $_SESSION['User_ID'] = $user_data['PersonnelID'];
-                            $_SESSION['role'] = $user_data['RoleName'];
+                    if (/*password_verify($password, $user_data['PasswordHash'])*/ $password == $user_data['password']) {
+                        if($user_data['status'] == 'active') {
+                            $_SESSION['User_ID'] = $user_data['user_id'];
+                            $_SESSION['role'] = $user_data['role'];
                             $_SESSION['LoginSuccess'] = true;
-                            $_SESSION['Username'] = $user_data['FirstName'] . ' ' . $user_data['LastName'];
+                            $_SESSION['firstname'] = $user_data['firstname'];
+                            $_SESSION['lastname'] = $user_data['lastname'];
                             session_regenerate_id(true);
                             
                             sendJsonResponse([

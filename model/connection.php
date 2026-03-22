@@ -2,7 +2,7 @@
 $dbhost = "localhost";
 $dbuser = "root";
 $dbpass = "";
-$dbname = "cmims_db";
+$dbname = "bic_pos_db";
 
 	if(!$con = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname))
 	{

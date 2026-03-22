@@ -1,3 +1,9 @@
+<?php
+$firstname = $_SESSION['firstname'] ?? 'Guest';
+$lastname = $_SESSION['lastname'] ?? 'Guest';
+$role = $_SESSION['role'] ?? 'Guest';
+?>
+
 <aside id="sidebar" class="fixed top-0 left-0 w-72 h-screen bg-gradient-to-br from-[#384862] via-[#483527] to-[#384862] text-white z-[1000] transition-all duration-300 overflow-hidden shadow-2xl flex flex-col">
     <!-- Sidebar Header -->
     <div class="p-6 border-b border-white/10 bg-white/5 backdrop-blur-sm">
@@ -26,8 +32,8 @@
                         <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-500"></div>
                     </a>
                 </li>
-                <li style="display: <?php echo $role == 'Administrator' || $role == 'Super Administrator' ? 'block' : 'none'; ?>;" class="nav-item <?php echo strpos($_SERVER['PHP_SELF'], 'AccountManagement.php') !== false ? 'active' : ''; ?>">
-                    <a href="#" onclick="showAlert('Inventory coming soon!', 'info');" class="flex items-center gap-3 px-4 py-3 text-white/80 hover:bg-white/10 hover:text-white hover:pl-6 transition-all duration-300 relative font-medium group rounded-lg overflow-hidden">
+                <li class="nav-item <?php echo strpos($_SERVER['PHP_SELF'], 'AccountManagement.php') !== false ? 'active' : ''; ?>">
+                    <a href="#" onclick="showAlert('POS coming soon!', 'info');" class="flex items-center gap-3 px-4 py-3 text-white/80 hover:bg-white/10 hover:text-white hover:pl-6 transition-all duration-300 relative font-medium group rounded-lg overflow-hidden">
                         <i class='bx bx-coffee text-lg min-w-[20px] text-center'></i>
                         <span class="text-sm whitespace-nowrap">POS</span>
                         <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-500"></div>
@@ -61,13 +67,20 @@
                         <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-500"></div>
                     </a>
                 </li>
-                <li style="display: <?php echo $role == 'Administrator' || $role == 'Super Administrator' ? 'block' : 'none'; ?>;" class="nav-item <?php echo strpos($_SERVER['PHP_SELF'], 'AuditLogs.php') !== false ? 'active' : ''; ?>">
+                <li class="nav-item <?php echo strpos($_SERVER['PHP_SELF'], 'AuditLogs.php') !== false ? 'active' : ''; ?>">
                     <a href="#" onclick="showAlert('Audit Logs coming soon!', 'info');" class="flex items-center gap-3 px-4 py-3 text-white/80 hover:bg-white/10 hover:text-white hover:pl-6 transition-all duration-300 relative font-medium group rounded-lg overflow-hidden">
                         <i class='bx bx-shield-quarter text-lg min-w-[20px] text-center'></i>
                         <span class="text-sm whitespace-nowrap">Audit Logs</span>
                         <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-500"></div>
                     </a>
                 </li>
+                <!-- <li style="display: <?php echo $role == 'Administrator' || $role == 'Super Administrator' ? 'block' : 'none'; ?>;" class="nav-item <?php echo strpos($_SERVER['PHP_SELF'], 'AuditLogs.php') !== false ? 'active' : ''; ?>">
+                    <a href="#" onclick="showAlert('Audit Logs coming soon!', 'info');" class="flex items-center gap-3 px-4 py-3 text-white/80 hover:bg-white/10 hover:text-white hover:pl-6 transition-all duration-300 relative font-medium group rounded-lg overflow-hidden">
+                        <i class='bx bx-shield-quarter text-lg min-w-[20px] text-center'></i>
+                        <span class="text-sm whitespace-nowrap">Audit Logs</span>
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-500"></div>
+                    </a>
+                </li> -->
             </ul>
         </div>
     </nav>
@@ -77,22 +90,22 @@
         <div class="profile-menu relative" id="profileMenu">
             <div class="flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-all duration-300 bg-white/5 hover:bg-white/10">
                 <div class="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center font-semibold text-sm text-white shadow-lg">
-                    DM
+                    <?php echo strtoupper(substr($firstname, 0, 1) . substr($lastname, 0, 1)); ?>
                 </div>
                 <div class="flex-1">
-                    <h3 class="text-sm font-semibold text-white">Dave Malaran</h3>
-                    <span class="text-xs text-white/70">Administrator</span>
+                    <h3 class="text-sm font-semibold text-white"><?php echo $firstname . ' ' . $lastname; ?></h3>
+                    <span class="text-xs text-white/70"><?php echo $role; ?></span>
                 </div>
                 <i class='bx bx-chevron-up text-white/70 transition-transform duration-300'></i>
             </div>
             <div class="absolute bottom-full left-0 right-0 mb-2 bg-slate-800/95 backdrop-blur-sm rounded-xl shadow-2xl border border-white/10 opacity-0 invisible translate-y-2 transition-all duration-300 overflow-hidden" id="profileDropdown">
                 <div class="p-4 border-b border-white/10 flex items-center gap-3">
                     <div class="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center font-semibold text-sm text-white shadow-lg">
-                        DM
+                        <?php echo strtoupper(substr($firstname, 0, 1) . substr($lastname, 0, 1)); ?>
                     </div>
                     <div class="flex-1">
-                        <h3 class="text-sm font-semibold text-white">Dave Malaran</h3>
-                        <span class="text-xs text-white/70">Administrator</span>
+                        <h3 class="text-sm font-semibold text-white"><?php echo $firstname . ' ' . $lastname; ?></h3>
+                        <span class="text-xs text-white/70"><?php echo $role; ?></span>
                     </div>
                 </div>
                 
